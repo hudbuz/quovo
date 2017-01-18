@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup as bs
 import selenium
 from selenium import webdriver
 import urllib2
+import subprocess
+
 
 args = sys.argv
 
@@ -57,7 +59,6 @@ file.write('NAME OF ISSUER      TITLE OF CLASS      CUISP       VALUE       SSHP
 for i in holdings:
     file.write(i.nameOfIssuer.text + '        '+i.titleOfClass.text + '         '+i.cusip.text +'        '+i.value.text +'        '+i.shrsOrPrnAmt.sshPrnamt.text +'       '+ i.shrsOrPrnAmt.sshPrnamtType.text+'       '+ i.votingAuthority.Sole.text +'        ' +i.votingAuthority.Shared.text + '\n')
 
-
 file.close()
-
+subprocess.call(['open', '-a', 'TextEdit', filename])
 driver.close()
